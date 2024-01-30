@@ -49,4 +49,16 @@ public class StringCalculatorKataTest {
                 calculator.add("1,-2,3,-4"));
         assertEquals("negatives not allowed: [-2, -4]", exception.getMessage());
     }
+
+    @Test
+    void testIgnoreNumbersGreaterThan1000() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        assertEquals(2, calculator.add("2,1001"));
+    }
+
+    @Test
+    void testIgnoreNumbersGreaterThan1000WithDelimiter() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        assertEquals(5, calculator.add("//;\n2;1001;3"));
+    }
 }

@@ -22,11 +22,10 @@ public class StringCalculatorKata {
                 int n = Integer.parseInt(num);
                 if (n < 0) {
                     negatives.add(n);
+                } else if (n <= 1000) {
+                    sum += n;
                 }
-                sum += n;
             }
-
-
         } else {
             String[] numberArray = numbers.split("[,\n]");
 
@@ -34,9 +33,11 @@ public class StringCalculatorKata {
                 int n = Integer.parseInt(num);
                 if (n < 0) {
                     negatives.add(n);
+                } else if (n <= 1000) {
+                    sum += n;
                 }
-                sum += n;
             }
+
         }
 
             if (!negatives.isEmpty()) {
