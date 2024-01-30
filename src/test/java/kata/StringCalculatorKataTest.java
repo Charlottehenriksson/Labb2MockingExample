@@ -22,4 +22,10 @@ public class StringCalculatorKataTest {
         StringCalculatorKata calculator = new StringCalculatorKata();
         assertEquals(3, calculator.add("1,2"));
     }
+
+    @Test
+    void testUnknownAmountOfNumbers() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        assertEquals(6, calculator.add("1,2,3"));
+    }
 }
