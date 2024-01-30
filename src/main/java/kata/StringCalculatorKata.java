@@ -2,6 +2,7 @@ package kata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class StringCalculatorKata {
 
@@ -14,7 +15,7 @@ public class StringCalculatorKata {
 
         if (numbers.startsWith("//")) {
             String[] parts = numbers.split("\n", 2);
-            String delimiter = parts[0].substring(2);
+            String delimiter = parseDelimiter(parts[0].substring(2));
             String[] numberArray = parts[1].split(delimiter);
 
 
@@ -44,7 +45,15 @@ public class StringCalculatorKata {
                 throw new IllegalArgumentException("negatives not allowed: " + negatives);
             }
             return sum;
+    }
 
+    private String parseDelimiter(String delimiterPart) {
+        if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
 
+            return Pattern.quote(delimiterPart.substring(1, delimiterPart.length() - 1));
+        } else {
+
+            return Pattern.quote(delimiterPart);
+        }
     }
 }

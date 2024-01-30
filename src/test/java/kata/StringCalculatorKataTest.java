@@ -61,4 +61,18 @@ public class StringCalculatorKataTest {
         StringCalculatorKata calculator = new StringCalculatorKata();
         assertEquals(5, calculator.add("//;\n2;1001;3"));
     }
+
+    @Test
+    void testDelimitersOfAnyLength() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        assertEquals(6, calculator.add("//[***]\n1***2***3"));
+    }
+
+    @Test
+    void testDelimitersOfAnyLengthWithNegativeNumbers() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                calculator.add("//[****]\n1****-2****3"));
+        assertEquals("negatives not allowed: [-2]", exception.getMessage());
+    }
 }
