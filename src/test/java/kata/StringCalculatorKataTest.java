@@ -75,4 +75,16 @@ public class StringCalculatorKataTest {
                 calculator.add("//[****]\n1****-2****3"));
         assertEquals("negatives not allowed: [-2]", exception.getMessage());
     }
+
+    @Test
+    void testMultipleDelimiters() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        assertEquals(6, calculator.add("//[;][%]\n1;2%3"));
+    }
+
+    @Test
+    void testMultipleDelimitersOfAnyLength() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        assertEquals(6, calculator.add("//[**][%%]\n1**2%%3"));
+    }
 }

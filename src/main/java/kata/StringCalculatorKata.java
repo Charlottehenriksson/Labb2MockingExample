@@ -49,8 +49,14 @@ public class StringCalculatorKata {
 
     private String parseDelimiter(String delimiterPart) {
         if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+            StringBuilder regex = new StringBuilder();
+            String[] delimiters = delimiterPart.substring(1, delimiterPart.length() - 1).split("\\]\\[");
 
-            return Pattern.quote(delimiterPart.substring(1, delimiterPart.length() - 1));
+            for (String delim : delimiters) {
+                regex.append(Pattern.quote(delim)).append("|");
+            }
+
+            return regex.toString().substring(0, regex.length() - 1);
         } else {
 
             return Pattern.quote(delimiterPart);
