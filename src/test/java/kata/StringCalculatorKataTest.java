@@ -41,4 +41,12 @@ public class StringCalculatorKataTest {
         StringCalculatorKata calculator = new StringCalculatorKata();
         assertEquals(3, calculator.add("//;\n1;2"));
     }
+
+    @Test
+    void testNegativeNumbers() {
+        StringCalculatorKata calculator = new StringCalculatorKata();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                calculator.add("1,-2,3,-4"));
+        assertEquals("negatives not allowed: [-2, -4]", exception.getMessage());
+    }
 }
